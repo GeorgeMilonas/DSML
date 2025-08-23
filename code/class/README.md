@@ -1,5 +1,4 @@
-# CLASS Process
+# CLASS: Process
 
-process.py is a class that is called from main.py to perform checks for
-the data quality, data alternations if needed for further analysis!
-
+`process.py` defines a class that is called from `main.py` to perform data
+quality checks and apply any necessary data alterations for further analysis.
