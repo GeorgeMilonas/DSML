@@ -8,7 +8,6 @@ called from the main function to simplify the process of DS/ML tasks.
 ```plaintext
 DSML/
 ├── src/              # reusable modules and classes
-├── notebooks/        # exploration, EDA, or examples
 ├── data/             # datasets or download scripts
 ├── models/           # saved models
 ├── tests/            # unit tests
