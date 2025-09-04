@@ -11,7 +11,7 @@ DSML/
 ├── data/             # datasets or download scripts
 ├── models/           # saved models
 ├── tests/            # unit tests
-├── requirements.txt or pyproject.toml
+├── requirements.txt
 ├── README.md
 └── LICENSE
 ```
