@@ -1,7 +1,7 @@
 # Data Science / Machine Learning
 
 For this Python project, the goal is to implement classes that can be
-called from the main function to simplify the process of DS/ML tasks.
+called from a main entry point in order to simplify the process of DS/ML tasks.
 
 
 # Folder Structure
