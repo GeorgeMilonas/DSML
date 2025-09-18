@@ -289,3 +289,6 @@ Persists results for sharing, reporting, or downstream analysis.
 ---
 
 
+## License
+
+This project is licensed under the [MIT License](./LICENSE) © 2025 George Milonas.
