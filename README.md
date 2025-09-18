@@ -26,7 +26,7 @@ DSML/
 3. Model Selection / Forecasting – Choose appropriate models and generate forecasts based on the data.
 
 
-##  Class DataProcessorMethods Overview
+##  Class DataProcessor - Methods Overview
 
 Below is a list of all available methods in the `DataProcessor` class, along with their purpose, arguments, and typical use cases.
 
