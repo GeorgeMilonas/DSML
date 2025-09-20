@@ -18,7 +18,7 @@ class DataProcessor:
             self.df = pd.DataFrame(dataset)
             self.filepath = None
         elif not filepath:
-            raise ValueError("Either 'filepath' or 'dataset' must be provided.")
+            raise ValueError("🔴 Either 'filepath' or 'dataset' must be provided.")
 
     def load(self):
         try:
@@ -46,12 +46,23 @@ class DataProcessor:
         print(self.df.dtypes)
         return self.df.dtypes
 
+#    def check_categorical_columns(self):
+#        categorical_cols = self.df.select_dtypes(include=["object", "category"]).columns
+#        if categorical_cols.empty:
+#            print("🔴 No categorical columns found.")
+#        else:
+#            print(f"🟢 Categorical columns: {list(categorical_cols)}")
+#        return list(categorical_cols)
+
     def check_categorical_columns(self):
         categorical_cols = self.df.select_dtypes(include=["object", "category"]).columns
         if categorical_cols.empty:
             print("🔴 No categorical columns found.")
         else:
-            print(f"🟢 Categorical columns: {list(categorical_cols)}")
+            print(f"🟢 Categorical columns and unique value counts:")
+            for col in categorical_cols:
+                unique_count = self.df[col].nunique(dropna=True)
+                print(f" - {col}: {unique_count} unique value(s)")
         return list(categorical_cols)
 
     def drop_columns(self, columns_to_drop):
@@ -73,6 +84,18 @@ class DataProcessor:
             print(
                 f"🔺 These columns were not found in the DataFrame and were skipped: {not_found}"
             )
+        return self
+    
+    def set_index_column(self, column_name):
+        if column_name not in self.df.columns:
+            raise ValueError(f"🔴 Column '{column_name}' not found in the DataFrame.")
+        
+        if self.df.index.name == column_name:
+            print(f"🔹 Column '{column_name}' is already the index.")
+            return self
+
+        self.df.set_index(column_name, inplace=True)
+        print(f"🟢 Column '{column_name}' set as index.")
         return self
 
     def set_index_date(
