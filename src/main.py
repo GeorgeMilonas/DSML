@@ -35,7 +35,6 @@ processor.check_categorical_columns()
 print("\n🔹 Set column ID as an Index:")
 processor.set_index_column('ID')
 
-"""
 print("\n🔹 Set column Date as an Index:")
 #processor.set_index_date('ID')
 processor.set_index('DATE', log_invalid=True, check_index=False)
@@ -45,7 +44,7 @@ processor.check_index_is_datetime()
 
 #print("\n🔹 Filtering by date range:")
 #processor.filter_by_date_range("2025-03-01", "2025-06-30")
-"""
+
 # Check missing values
 print("\n🔹 Missing values check:")
 processor.check_missing()
