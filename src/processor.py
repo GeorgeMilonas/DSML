@@ -46,14 +46,6 @@ class DataProcessor:
         print(self.df.dtypes)
         return self.df.dtypes
 
-#    def check_categorical_columns(self):
-#        categorical_cols = self.df.select_dtypes(include=["object", "category"]).columns
-#        if categorical_cols.empty:
-#            print("🔴 No categorical columns found.")
-#        else:
-#            print(f"🟢 Categorical columns: {list(categorical_cols)}")
-#        return list(categorical_cols)
-
     def check_categorical_columns(self):
         categorical_cols = self.df.select_dtypes(include=["object", "category"]).columns
         if categorical_cols.empty:
