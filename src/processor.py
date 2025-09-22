@@ -202,20 +202,20 @@ class DataProcessor:
     def check_missing(self, verbose=True, return_all=False, return_rows=False):
         missing_counts = self.df.isnull().sum()
         total_missing = missing_counts.sum()
-
+        
         if verbose:
             print("🔹 Missing values per column:")
             if total_missing == 0:
                 print("🟢 No missing values found.")
             else:
                 print(missing_counts[missing_counts > 0])
-
+        
         if return_rows:
             missing_rows = self.df[self.df.isnull().any(axis=1)]
+            row_indices = missing_rows.index.tolist()
             print(f"\n🔴 Rows with missing values: {len(missing_rows)}")
+            print(f"🔸 Missing value row indices:: {row_indices}")
             return missing_rows
-
-        return missing_counts if return_all else missing_counts[missing_counts > 0]
 
     def handle_missing_values(self, strategy="mean"):
         initial_missing = self.df.isnull().sum().sum()

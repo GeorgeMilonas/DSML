@@ -29,12 +29,18 @@ processor.check_dtypes()
 print("\n🔹 Check for categorical columns:")
 processor.check_categorical_columns()
 
-#print("\n🔹 Drop unused columns:")
-#processor.drop_columns([])
-'''
+print("\n🔹 Unique Values in Categorical Column:")
+print(processor.df['DAY'].unique())
+print(processor.df['MANAGER'].unique())
+
 print("\n🔹 Set column ID as an Index:")
 processor.set_index_column('ID')
 
+print("\n🔹 Drop unused columns:")
+#processor.drop_columns(['DAY'])
+processor.drop_columns([])
+
+'''
 print("\n🔹 Set column Date as an Index:")
 #processor.set_index_date('ID')
 processor.set_index('DATE', log_invalid=True, check_index=False)
@@ -45,14 +51,15 @@ processor.check_index_is_datetime()
 #print("\n🔹 Filtering by date range:")
 #processor.filter_by_date_range("2025-03-01", "2025-06-30")
 
-# Check missing values
-print("\n🔹 Missing values check:")
-processor.check_missing()
 
+# Checking for Missing Values
+print("\n🔹 Checking for Missing Values:")
+processor.check_missing(return_rows=True)
+'''
 # Hnndle missing values
 print("\n🔹 Handle missing values:")
 processor.handle_missing_values('mean')
-
+'''
 print("\n🔹 Check for duplicate rows in DataFrame:")
 if processor.inspect_duplicates(subset=None, keep=False, return_rows=False) > 0:
     print("\n🔹 Make log file for duplicates:")
