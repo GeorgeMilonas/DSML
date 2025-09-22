@@ -50,16 +50,15 @@ processor.check_index_is_datetime()
 
 #print("\n🔹 Filtering by date range:")
 #processor.filter_by_date_range("2025-03-01", "2025-06-30")
-
-
+'''
 # Checking for Missing Values
 print("\n🔹 Checking for Missing Values:")
 processor.check_missing(return_rows=True)
 '''
-# Hnndle missing values
+# Handle missing values
 print("\n🔹 Handle missing values:")
 processor.handle_missing_values('mean')
-'''
+
 print("\n🔹 Check for duplicate rows in DataFrame:")
 if processor.inspect_duplicates(subset=None, keep=False, return_rows=False) > 0:
     print("\n🔹 Make log file for duplicates:")
