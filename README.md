@@ -63,27 +63,33 @@ DSML/
 
 
 ## Key Classes
-###  Key Class: `DataProcessor`
+### 🧰 Key Class: `DataProcessor` – Method Overview
 
-| Method | Description |
-|--------|-------------|
-| `check_dtypes()` | Inspect data types of all columns |
-| `drop_columns(columns)` | Drop specified columns from the DataFrame |
-| `check_categorical_columns()` | List all categorical columns |
-| `set_index_date(column_name)` | Convert a column to datetime and set as index |
-| `check_index_is_datetime()` | Check if index is datetime type |
-| `check_missing()` | Display count of missing values |
-| `handle_missing_values(strategy='drop')` | Handle missing values (`drop`, `mean`, `median`, `mode`) |
-| `inspect_duplicates(subset=None)` | Check for duplicate rows |
-| `handle_duplicates(action='drop')` | Drop or keep duplicate records |
-| `log_duplicates(filepath)` | Save duplicate rows to a CSV log |
-| `check_outliers(z_thresh=2)` | Detect outliers using Z-score method |
-| `remove_outliers_zscore(z_thresh=2)` | Remove outliers with Z-score method |
-| `remove_outliers_iqr(multiplier=1.5)` | Remove outliers with IQR method |
-| `visualize_outliers_boxplot(before_df, after_df)` | Compare outliers using boxplots |
-| `visualize_outliers_histogram(before_df, after_df)` | Compare histograms before/after cleaning |
-| `run_all_checks()` | Run a full suite of data quality checks |
-| `save(filepath, format='csv')` | Save cleaned DataFrame to disk |
+| No. | Method | Description |
+|-----|--------|-------------|
+| 1️⃣ | `__init__(filepath=None, dataset=None)` | Initialize the class with a file path or dataset |
+| 2️⃣ | `load()` | Load data from CSV, Excel, or JSON files |
+| 3️⃣ | `check_dtypes()` | Print and return data types of each column |
+| 4️⃣ | `check_categorical_columns()` | List categorical columns and count unique values |
+| 5️⃣ | `drop_columns(columns_to_drop)` | Drop specified columns from the DataFrame |
+| 6️⃣ | `set_index_column(column_name)` | Set any column as the DataFrame index |
+| 7️⃣ | `set_index_date(...)` | Convert a column to datetime and set as index (with options) |
+| 8️⃣ | `check_index_is_datetime()` | Validate if index is a datetime/date type |
+| 9️⃣ | `check_missing(...)` | Analyze and print missing data; return rows if needed |
+| 🔟 | `handle_missing_values(strategy)` | Handle missing values using strategy (`mean`, `median`, etc.) |
+| 1️⃣1️⃣ | `inspect_duplicates(...)` | Detect duplicate rows with optional subset & output |
+| 1️⃣2️⃣ | `handle_duplicates(method)` | Drop, keep, or flag duplicate rows |
+| 1️⃣3️⃣ | `log_duplicates(...)` | Save duplicate rows to a log file (`csv` or `xlsx`) |
+| 1️⃣4️⃣ | `check_outliers(z_thresh)` | Identify numeric outliers using Z-score |
+| 1️⃣5️⃣ | `remove_outliers_zscore(z_thresh)` | Remove rows with outliers across all numeric columns |
+| 1️⃣6️⃣ | `remove_outliers_from_column(column, z_thresh)` | Remove outliers from a specific column (Z-score) |
+| 1️⃣7️⃣ | `remove_outliers_iqr(column, multiplier)` | Remove outliers from a column using IQR |
+| 1️⃣8️⃣ | `get_processed_data()` | Return the current version of the processed DataFrame |
+| 1️⃣9️⃣ | `visualize_outliers_boxplot(original_df, cleaned_df, column)` | Compare outliers before and after using boxplots |
+| 2️⃣0️⃣ | `visualize_outliers_histogram(original_df, cleaned_df, column)` | Compare distribution before/after with histograms |
+| 2️⃣1️⃣ | `run_all_checks()` | Run major data quality checks in one step |
+| 2️⃣2️⃣ | `save(path, format='csv')` | Save the final DataFrame as a CSV or Excel file |
+
 
 ## Project Status & Roadmap
 | Feature                      | Status         |
