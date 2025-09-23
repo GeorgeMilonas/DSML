@@ -63,7 +63,7 @@ DSML/
 
 
 ## Key Classes
-### 🧰 Key Class: `DataProcessor` – Method Overview
+### Key Class: `DataProcessor` – Methods Overview
 
 | No. | Method | Description |
 |-----|--------|-------------|
@@ -92,13 +92,12 @@ DSML/
 
 
 ## Project Status & Roadmap
-| Feature                      | Status         |
+| Classes                      | Status         |
 | ---------------------------- | -------------- |
-| Data cleaning                | ✅ Implemented  |
-| Outlier detection            | ✅ Implemented  |
-| Visualization tools          | 🔄 In Progress |
-| Forecasting / Model training | 🔜 Planned     |
-| Time series support          | 🔜 Planned     |
+| Data Processor               |  Implemented  |
+| Visualization tools          |  In Progress |
+| Forecasting / Model training |  In Progress   |
+| Time series support          |  In Progress   |
 
 
 ## License
