@@ -3,6 +3,32 @@
 For this Python project, the goal is to implement classes that can be
 called from a main entry point in order to simplify the process of DS/ML tasks.
 
+This project provides a set of Python classes to simplify common data science and machine learning tasks such as data cleaning, outlier detection, and model preparation. It aims to streamline workflows for analysts and ML practitioners by wrapping reusable methods into easy-to-use modules.
+
+# Quick Start
+## Installation
+
+```bash
+git clone https://github.com/GeorgeMilonas/DSML.git
+cd DSML
+pip install -r requirements.txt
+
+---
+
+### **Quick Usage Example**
+
+```python
+from processor import DataProcessor
+
+file_path = '/your_path/data/foo_sales_dataset.csv'
+target_col = 'your_target_column'
+
+# Load data and create a processor data frame object 
+processor = DataProcessor(filepath=file_path).load()
+
+processor.check_missing()
+processor.handle_missing_values('mean')
+processor.save(path="/your_path/data/processed_data.xlsx", format="xlsx")
 
 # Folder Structure
 ```plaintext
