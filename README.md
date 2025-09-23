@@ -85,6 +85,16 @@ DSML/
 | `run_all_checks()` | Run a full suite of data quality checks |
 | `save(filepath, format='csv')` | Save cleaned DataFrame to disk |
 
+## Project Status & Roadmap
+| Feature                      | Status         |
+| ---------------------------- | -------------- |
+| Data cleaning                | ✅ Implemented  |
+| Outlier detection            | ✅ Implemented  |
+| Visualization tools          | 🔄 In Progress |
+| Forecasting / Model training | 🔜 Planned     |
+| Time series support          | 🔜 Planned     |
+
+
 ## License
 
 This project is licensed under the [MIT License](./LICENSE) © 2025 George Milonas.
