@@ -67,28 +67,28 @@ DSML/
 
 | No. | Method | Description |
 |-----|--------|-------------|
-| 1️⃣ | `__init__(filepath=None, dataset=None)` | Initialize the class with a file path or dataset |
-| 2️⃣ | `load()` | Load data from CSV, Excel, or JSON files |
-| 3️⃣ | `check_dtypes()` | Print and return data types of each column |
-| 4️⃣ | `check_categorical_columns()` | List categorical columns and count unique values |
-| 5️⃣ | `drop_columns(columns_to_drop)` | Drop specified columns from the DataFrame |
-| 6️⃣ | `set_index_column(column_name)` | Set any column as the DataFrame index |
-| 7️⃣ | `set_index_date(...)` | Convert a column to datetime and set as index (with options) |
-| 8️⃣ | `check_index_is_datetime()` | Validate if index is a datetime/date type |
-| 9️⃣ | `check_missing(...)` | Analyze and print missing data; return rows if needed |
-| 🔟 | `handle_missing_values(strategy)` | Handle missing values using strategy (`mean`, `median`, etc.) |
-| 1️⃣1️⃣ | `inspect_duplicates(...)` | Detect duplicate rows with optional subset & output |
-| 1️⃣2️⃣ | `handle_duplicates(method)` | Drop, keep, or flag duplicate rows |
-| 1️⃣3️⃣ | `log_duplicates(...)` | Save duplicate rows to a log file (`csv` or `xlsx`) |
-| 1️⃣4️⃣ | `check_outliers(z_thresh)` | Identify numeric outliers using Z-score |
-| 1️⃣5️⃣ | `remove_outliers_zscore(z_thresh)` | Remove rows with outliers across all numeric columns |
-| 1️⃣6️⃣ | `remove_outliers_from_column(column, z_thresh)` | Remove outliers from a specific column (Z-score) |
-| 1️⃣7️⃣ | `remove_outliers_iqr(column, multiplier)` | Remove outliers from a column using IQR |
-| 1️⃣8️⃣ | `get_processed_data()` | Return the current version of the processed DataFrame |
-| 1️⃣9️⃣ | `visualize_outliers_boxplot(original_df, cleaned_df, column)` | Compare outliers before and after using boxplots |
-| 2️⃣0️⃣ | `visualize_outliers_histogram(original_df, cleaned_df, column)` | Compare distribution before/after with histograms |
-| 2️⃣1️⃣ | `run_all_checks()` | Run major data quality checks in one step |
-| 2️⃣2️⃣ | `save(path, format='csv')` | Save the final DataFrame as a CSV or Excel file |
+| 1. | `__init__(filepath=None, dataset=None)` | Initialize the class with a file path or dataset |
+| 2. | `load()` | Load data from CSV, Excel, or JSON files |
+| 3. | `check_dtypes()` | Print and return data types of each column |
+| 4. | `check_categorical_columns()` | List categorical columns and count unique values |
+| 5. | `drop_columns(columns_to_drop)` | Drop specified columns from the DataFrame |
+| 6. | `set_index_column(column_name)` | Set any column as the DataFrame index |
+| 7. | `set_index_date(...)` | Convert a column to datetime and set as index (with options) |
+| 8. | `check_index_is_datetime()` | Validate if index is a datetime/date type |
+| 9. | `check_missing(...)` | Analyze and print missing data; return rows if needed |
+| 10. | `handle_missing_values(strategy)` | Handle missing values using strategy (`mean`, `median`, etc.) |
+| 11. | `inspect_duplicates(...)` | Detect duplicate rows with optional subset & output |
+| 12. | `handle_duplicates(method)` | Drop, keep, or flag duplicate rows |
+| 13. | `log_duplicates(...)` | Save duplicate rows to a log file (`csv` or `xlsx`) |
+| 14. | `check_outliers(z_thresh)` | Identify numeric outliers using Z-score |
+| 15. | `remove_outliers_zscore(z_thresh)` | Remove rows with outliers across all numeric columns |
+| 16. | `remove_outliers_from_column(column, z_thresh)` | Remove outliers from a specific column (Z-score) |
+| 17. | `remove_outliers_iqr(column, multiplier)` | Remove outliers from a column using IQR |
+| 18. | `get_processed_data()` | Return the current version of the processed DataFrame |
+| 19. | `visualize_outliers_boxplot(original_df, cleaned_df, column)` | Compare outliers before and after using boxplots |
+| 20. | `visualize_outliers_histogram(original_df, cleaned_df, column)` | Compare distribution before/after with histograms |
+| 21. | `run_all_checks()` | Run major data quality checks in one step |
+| 22. | `save(path, format='csv')` | Save the final DataFrame as a CSV or Excel file |
 
 
 ## Project Status & Roadmap
