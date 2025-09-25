@@ -278,7 +278,6 @@ class DataProcessor:
 	    
         return self
 
-
     def inspect_duplicates(self, subset=None, keep=False, return_rows=False):
         dups = self.df[self.df.duplicated(subset=subset, keep=keep)]
         num_dups = len(dups)
@@ -376,8 +375,6 @@ class DataProcessor:
         print(f"🔴 Removing duplicate columns. Keeping: {keep}")
         self.df = self.df.loc[:, ~self.df.columns.duplicated(keep=keep)]
         return self
-
-
 
     def check_outliers(self, z_thresh=2):
         numeric_df = self.df.select_dtypes(include="number")
