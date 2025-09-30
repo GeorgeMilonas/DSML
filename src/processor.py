@@ -336,7 +336,7 @@ class DataProcessor:
 
         if filename is None:
             timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-            filename = f"🔴 duplicates_log_{timestamp}.{file_format}"
+            filename = f"duplicates_log_{timestamp}.{file_format}"
         else:
             filename = (
                 f"{filename}.{file_format}"
@@ -377,21 +377,42 @@ class DataProcessor:
         self.df = self.df.loc[:, ~self.df.columns.duplicated(keep=keep)]
         return self
 
-
-
-    def check_outliers(self, z_thresh=2):
+    def check_outliers(self, z_thresh=2, return_rows=False, log_path=None):
         numeric_df = self.df.select_dtypes(include="number")
         print("\n🟢 Numeric columns used for Z-score calculation:")
         print(numeric_df.columns)
-
+    
         z_scores = numeric_df.apply(zscore)
         print("\n🟢 Sample Z-scores:")
         print(z_scores.head())
-
-        outliers = (z_scores.abs() > z_thresh).sum()
+    
+        # Identify boolean DataFrame of outliers
+        is_outlier = z_scores.abs() > z_thresh
+    
+        # Count outliers per column
+        outliers_count = is_outlier.sum()
         print("\n🟢 Outliers per column (Z-score > threshold):")
-        print(outliers[outliers > 0])
-        return outliers
+        print(outliers_count[outliers_count > 0])
+    
+        if return_rows:
+            # Combine with original DataFrame to show full rows that contain outliers
+            outlier_rows = self.df[is_outlier.any(axis=1)]
+            print(f"\n🔸 Rows with at least one outlier (Z > {z_thresh}):")
+            print(outlier_rows)
+            
+            # Log to file if path provided and rows exist
+            if log_path and not outlier_rows.empty:
+                # Ensure path is a Path object
+                log_path = Path(log_path)
+                log_path.parent.mkdir(parents=True, exist_ok=True)
+                
+                # Save with index as a column
+                outlier_rows.reset_index().to_csv(log_path, index=False)
+                print(f"🟢 Logged outlier rows to: {log_path}")
+            
+            return outlier_rows
+        else:
+            return outliers_count    
 
     def remove_outliers_zscore(self, z_thresh=2):
         numeric_df = self.df.select_dtypes(include="number")
@@ -418,34 +439,52 @@ class DataProcessor:
         self.df = filtered_df  # Update the internal DataFrame
         return self
 
-    def remove_outliers_iqr(self, column, iqr_multiplier=1.5):
+    def remove_outliers_iqr(self, column, iqr_multiplier=1.5, return_rows=False, log_path=None):
         if column not in self.df.columns:
             print(f"🔴 Column '{column}' not found in the dataset.")
             return self
-
+	    
         q1 = self.df[column].quantile(0.25)
         q3 = self.df[column].quantile(0.75)
         iqr = q3 - q1
-
+	    
         lower_bound = q1 - iqr_multiplier * iqr
         upper_bound = q3 + iqr_multiplier * iqr
-
+	    
+        # Identify outliers
+        outliers = self.df[
+            (self.df[column] < lower_bound) | (self.df[column] > upper_bound)
+        ]
+	    
         before_rows = self.df.shape[0]
+        
+        # Remove outliers
         self.df = self.df[
             (self.df[column] >= lower_bound) & (self.df[column] <= upper_bound)
         ]
         after_rows = self.df.shape[0]
         removed = before_rows - after_rows
-
+	    
         if removed > 0:
             print(
                 f"\n🔴 Removed {removed} outlier(s) from '{column}' using IQR (multiplier={iqr_multiplier})"
             )
+            print("\n🔸 Sample of removed outlier rows:")
+            print(outliers.head())
+            
+            # Log outliers if path is given
+            if log_path:
+                from pathlib import Path
+                log_path = Path(log_path)
+                log_path.parent.mkdir(parents=True, exist_ok=True)
+                outliers.reset_index().to_csv(log_path, index=False)
+                print(f"\n🟢 Logged IQR outlier rows to: {log_path}")
         else:
             print(
                 f"\n🟢 No outliers found in '{column}' using IQR (multiplier={iqr_multiplier})"
             )
-        return self
+        
+        return outliers if return_rows else self
 
     def get_processed_data(self):
         # Returns the processed DataFrame.
