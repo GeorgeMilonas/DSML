@@ -80,15 +80,17 @@ DSML/
 | 11. | `inspect_duplicates(...)` | Detect duplicate rows with optional subset & output |
 | 12. | `handle_duplicates(method)` | Drop, keep, or flag duplicate rows |
 | 13. | `log_duplicates(...)` | Save duplicate rows to a log file (`csv` or `xlsx`) |
-| 14. | `check_outliers(z_thresh)` | Identify numeric outliers using Z-score |
-| 15. | `remove_outliers_zscore(z_thresh)` | Remove rows with outliers across all numeric columns |
-| 16. | `remove_outliers_from_column(column, z_thresh)` | Remove outliers from a specific column (Z-score) |
-| 17. | `remove_outliers_iqr(column, multiplier)` | Remove outliers from a column using IQR |
-| 18. | `get_processed_data()` | Return the current version of the processed DataFrame |
-| 19. | `visualize_outliers_boxplot(original_df, cleaned_df, column)` | Compare outliers before and after using boxplots |
-| 20. | `visualize_outliers_histogram(original_df, cleaned_df, column)` | Compare distribution before/after with histograms |
-| 21. | `run_all_checks()` | Run major data quality checks in one step |
-| 22. | `save(path, format='csv')` | Save the final DataFrame as a CSV or Excel file |
+| 14. | `inspect_duplicate_columns()` | Checks for duplicate column names in the DataFrame |
+| 15. | `handle_duplicate_columns()` | Removes duplicate columns from the DataFrame |
+| 16. | `check_outliers(z_thresh)` | Identify numeric outliers using Z-score |
+| 17. | `remove_outliers_zscore(z_thresh)` | Remove rows with outliers across all numeric columns |
+| 18. | `remove_outliers_from_column(column, z_thresh)` | Remove outliers from a specific column (Z-score) |
+| 19. | `remove_outliers_iqr(column, multiplier)` | Remove outliers from a column using IQR |
+| 20. | `get_processed_data()` | Return the current version of the processed DataFrame |
+| 21. | `visualize_outliers_boxplot(original_df, cleaned_df, column)` | Compare outliers before and after using boxplots |
+| 22. | `visualize_outliers_histogram(original_df, cleaned_df, column)` | Compare distribution before/after with histograms |
+| 23. | `run_all_checks()` | Run major data quality checks in one step |
+| 24. | `save(path, format='csv')` | Save the final DataFrame as a CSV or Excel file |
 
 
 ## Project Status & Roadmap
