@@ -14,7 +14,7 @@ A reusable Python project providing classes to simplify common data science / ML
 - [Key Classes](#key-classes)  
 - [Project Status & Roadmap](#project-status--roadmap)  
 - [Contributing](#contributing)  
-- [License](#license)
+- [License]((https://img.shields.io/badge/license-MIT-green))
 
 
 ## Installation
@@ -103,6 +103,6 @@ DSML/
 | Time series support          |  In Progress   |
 
 
-## License(https://img.shields.io/badge/license-MIT-green)
+## License
 
 This project is licensed under the [MIT License](./LICENSE) © 2025 George Milonas.
