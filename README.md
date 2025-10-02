@@ -44,6 +44,7 @@ processor.check_missing()
 processor.handle_missing_values('mean')
 processor.save(path="/your_path/data/processed_data.xlsx", format="xlsx")
 ```
+You can find the sample dataset [here](./data/foo_sales_dataset.csv).
 
 ## Folder Structure
 ```plaintext
