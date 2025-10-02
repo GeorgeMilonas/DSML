@@ -46,6 +46,9 @@ processor.save(path="/your_path/data/processed_data.xlsx", format="xlsx")
 ```
 You can find the sample dataset [here](./data/foo_sales_dataset.csv).
 
+### Sample Output
+
+```plaintext
 🟢 Data loaded successfully.
 
 🔹 First 5 rows:
