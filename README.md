@@ -1,4 +1,5 @@
 # DSML – Data Science / Machine Learning Project
+A Python toolkit designed to streamline common data science and machine learning workflows by providing reusable classes for data cleaning, missing value handling, outlier detection, and transformations.
 
 # Project Summary
 A reusable Python project providing classes to simplify common data science / ML workflows: data cleaning, missing value – outlier handling, and transformation steps. Ideal for analysts or machine learning practitioners to integrate into their pipelines.
