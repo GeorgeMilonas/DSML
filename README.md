@@ -141,6 +141,15 @@ DSML/
 | Time series support          |  In Progress   |
 
 
+## Contributing
+
+Contributions are welcome! Please feel free to open issues or submit pull requests to improve the project.
+
+---
+
+Thank you for your support!
+
+
 ## License
 
 This project is licensed under the [MIT License](./LICENSE) © 2025 George Milonas.
