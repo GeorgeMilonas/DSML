@@ -18,7 +18,7 @@ A reusable Python project providing classes to simplify common data science / ML
 - [Key Classes](#key-classes)  
 - [Project Status & Roadmap](#project-status--roadmap)  
 - [Contributing](#contributing)
-- [License](#licence)
+- [License](#license)
 
 
 ## Installation
