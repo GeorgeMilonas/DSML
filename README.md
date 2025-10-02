@@ -77,7 +77,7 @@ dtype: object
  - DATE: 221 unique value(s)
  - DAY: 7 unique value(s)
  - MANAGER: 3 unique value(s)
-
+```
 
 ## Folder Structure
 ```plaintext
