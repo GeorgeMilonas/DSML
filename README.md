@@ -12,7 +12,7 @@ A reusable Python project providing classes to simplify common data science / ML
 ## Contents
 
 - [Installation](#installation)  
-- [Quick Start](#quick-start)  
+- [Quick Start](#quick-start)
 - [Folder Structure](#folder-structure)  
 - [Work Flow](#workflow)  
 - [Key Classes](#key-classes)  
@@ -45,6 +45,36 @@ processor.handle_missing_values('mean')
 processor.save(path="/your_path/data/processed_data.xlsx", format="xlsx")
 ```
 You can find the sample dataset [here](./data/foo_sales_dataset.csv).
+
+🟢 Data loaded successfully.
+
+🔹 First 5 rows:
+ID        DATE        DAY  MANAGER  ESALES   CARDS    CASH  TOTAL_SALES  RECEIPT
+0   1  2025-01-01  Wednesday      Bob  166.57  304.67  334.48       805.72       34
+1   2  2025-01-01  Wednesday  Charlie  614.18  156.63  239.96      1010.77       33
+2   3  2025-01-01  Wednesday    Alice  143.21  419.47  263.33       826.01       51
+3   4  2025-01-02   Thursday      Bob  988.67  669.25  433.05      2090.97       32
+4   5  2025-01-03     Friday      Bob  263.15  615.05  439.86      1318.06       83
+
+🔹 Number of rows and columns in the dataset: (654, 9)
+
+🔹 Check for Data Types:
+ID               int64
+DATE            object
+DAY             object
+MANAGER         object
+ESALES         float64
+CARDS          float64
+CASH           float64
+TOTAL_SALES    float64
+RECEIPT          int64
+dtype: object
+
+🔹 Categorical columns and unique value counts:
+ - DATE: 221 unique value(s)
+ - DAY: 7 unique value(s)
+ - MANAGER: 3 unique value(s)
+
 
 ## Folder Structure
 ```plaintext
