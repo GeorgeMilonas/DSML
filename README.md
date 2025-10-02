@@ -1,4 +1,4 @@
-# DSML – Data Science / Machine Learning Project
+# DS/ML – Data Science / Machine Learning Project
 A Python toolkit designed to streamline common data science and machine learning workflows by providing reusable classes for data cleaning, missing value handling, outlier detection, and transformations.
 
 # Project Summary
@@ -103,6 +103,6 @@ DSML/
 | Time series support          |  In Progress   |
 
 
-## License
+## License(https://img.shields.io/badge/license-MIT-green)
 
 This project is licensed under the [MIT License](./LICENSE) © 2025 George Milonas.
