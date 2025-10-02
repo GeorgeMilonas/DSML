@@ -1,4 +1,7 @@
 # DS/ML – Data Science / Machine Learning Project
+![License](https://img.shields.io/badge/license-MIT-green)
+![Build Status](https://img.shields.io/badge/build-passing-brightgreen)
+![Python Version](https://img.shields.io/badge/python-3.8%2B-blue)
 A Python toolkit designed to streamline common data science and machine learning workflows by providing reusable classes for data cleaning, missing value handling, outlier detection, and transformations.
 
 # Project Summary
@@ -14,7 +17,7 @@ A reusable Python project providing classes to simplify common data science / ML
 - [Key Classes](#key-classes)  
 - [Project Status & Roadmap](#project-status--roadmap)  
 - [Contributing](#contributing)  
-- [License](https://img.shields.io/badge/license-MIT-green)
+- [License]
 
 
 ## Installation
