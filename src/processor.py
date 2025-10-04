@@ -217,67 +217,81 @@ class DataProcessor:
             print(f"🔸 Missing value row indices:: {row_indices}")
             return missing_rows
 
-    def handle_missing_values(self, strategy="mean"):
+    def handle_missing_values(self, strategy="mean", force_int_cols=None):
+        if force_int_cols is None:
+            force_int_cols = []
+			
         initial_missing = self.df.isnull().sum().sum()
-	    
+
         if initial_missing == 0:
             print("🟢 No missing values to handle.")
             return self
-	    
-        # Select columns with missing values
-        missing_cols = self.df.columns[self.df.isnull().any()]
-        numerical_cols = self.df[missing_cols].select_dtypes(include=["int64", "float64"]).columns
-        categorical_cols = self.df[missing_cols].select_dtypes(include=["object"]).columns
-	    
-        if strategy == "mean":
-            filled_cols = []
-            for col in numerical_cols:
-                if self.df[col].isnull().any():
-                    self.df[col] = self.df[col].fillna(self.df[col].mean())
-                    #self.df[col].fillna(self.df[col].mean(), inplace=True)
-                    filled_cols.append(col)
-            print(f"🔸 Filled missing numeric values using mean in columns: {filled_cols}")
-	    
-        elif strategy == "median":
-            filled_cols = []
-            for col in numerical_cols:
-                if self.df[col].isnull().any():
-                    self.df[col] = self.df[col].fillna(self.df[col].median())
+    
+	    # Helper function to check if a column is integer-like
+        def is_integer_like(series):
+            return pd.api.types.is_numeric_dtype(series) and series.dropna().apply(float.is_integer).all()    
+        
+		    # Identify columns with missing values
+            missing_cols = self.df.columns[self.df.isnull().any()]
+            numerical_cols = self.df[missing_cols].select_dtypes(include=["int64", "float64"]).columns
+            categorical_cols = self.df[missing_cols].select_dtypes(include=["object", "category"]).columns
 
-                    filled_cols.append(col)
-            print(f"🔸 Filled missing numeric values using median in columns: {filled_cols}")
-	    
-        elif strategy == "most_frequent":
-            filled_cols = []
-            for col in categorical_cols:
-                if self.df[col].isnull().any():
-                    mode = self.df[col].mode()
-                    if not mode.empty:
-                        self.df[col].fillna(mode.iloc[0], inplace=True)
+            if strategy == "mean":
+                filled_cols = []
+                for col in numerical_cols:
+                    if self.df[col].isnull().any():
+                        mean_value = self.df[col].mean()
+                        if col in force_int_cols or is_integer_like(self.df[col]):
+                            mean_value = round(mean_value)
+                            self.df[col] = self.df[col].fillna(mean_value).astype(int)
+                        else:
+                            self.df[col] = self.df[col].fillna(mean_value)
                         filled_cols.append(col)
-            if filled_cols:
-                print(f"🔸 Filled missing categorical values using mode in columns: {filled_cols}")
-            else:
-                print("🟢 No categorical missing values filled (no suitable mode found).")
-	    
-        elif strategy == "drop":
-            before_drop = len(self.df)
-            self.df.dropna(inplace=True)
-            after_drop = len(self.df)
-            print(f"🟢 Dropped rows with missing values: {before_drop - after_drop}")
-	    
-        else:
-            raise ValueError("🔴 Invalid strategy. Choose from: 'mean', 'median', 'drop', or 'most_frequent'.")
-	    
-        # Automatic re-check
-        remaining_missing = self.df.isnull().sum().sum()
-        if remaining_missing == 0:
-            print("🟢 All missing values handled.")
-        else:
-            print(f"🔴 {remaining_missing} missing values still remain after applying strategy '{strategy}'.")
-	    
-        return self
+                print(f"🔸 Filled missing numeric values using mean in columns: {filled_cols}")
 
+            elif strategy == "median":
+                filled_cols = []
+                for col in numerical_cols:
+                    if self.df[col].isnull().any():
+                        median_value = self.df[col].median()
+                        if col in force_int_cols or is_integer_like(self.df[col]):
+                            median_value = round(median_value)
+                            self.df[col] = self.df[col].fillna(median_value).astype(int)
+                        else:
+                            self.df[col] = self.df[col].fillna(median_value)
+                        filled_cols.append(col)
+                print(f"🔸 Filled missing numeric values using median in columns: {filled_cols}")
+
+            elif strategy == "most_frequent":
+                filled_cols = []
+                for col in categorical_cols:
+                    if self.df[col].isnull().any():
+                        mode = self.df[col].mode()
+                        if not mode.empty:
+                            self.df[col].fillna(mode.iloc[0], inplace=True)
+                            filled_cols.append(col)
+                if filled_cols:
+                    print(f"🔸 Filled missing categorical values using mode in columns: {filled_cols}")
+                else:
+                    print("🟢 No categorical missing values filled (no suitable mode found).")
+
+            elif strategy == "drop":
+                before_drop = len(self.df)
+                self.df.dropna(inplace=True)
+                after_drop = len(self.df)
+                print(f"🟢 Dropped rows with missing values: {before_drop - after_drop}")
+
+            else:
+                raise ValueError("🔴 Invalid strategy. Choose from: 'mean', 'median', 'drop', or 'most_frequent'.")
+
+            # Final check
+            remaining_missing = self.df.isnull().sum().sum()
+            if remaining_missing == 0:
+                print("🟢 All missing values handled.")
+            else:
+                print(f"🔴 {remaining_missing} missing values still remain after applying strategy '{strategy}'.")
+
+            return self
 
     def inspect_duplicates(self, subset=None, keep=False, return_rows=False):
         dups = self.df[self.df.duplicated(subset=subset, keep=keep)]
