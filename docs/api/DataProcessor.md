@@ -1,16 +1,26 @@
 # DataProcessor
 
-This class provides tools for data cleaning, missing value handling, outlier detection, and transformations.
+This document provides a detailed API reference for the `DataProcessor` class used in the DSML project.
 
 ## Methods
 
-### `fit(X, y)`
-Fits the model.
 
-**Parameters:**
+---
 
-- `X`: `pd.DataFrame` — The input data
-- `y`: `pd.Series` — The labels
+## 1. `__init__(self, filepath=None, dataset=None)`
 
-**Returns:**  
-`self`
+**Description:**  
+Initializes a `DataProcessor` instance. Either a file path or a dataset must be provided.
+
+**Args:**
+- `filepath` (`str`, optional): Path to the data file (`.csv`, `.xlsx`, `.xls`, or `.json`).
+- `dataset` (`pd.DataFrame`, optional): A dataset provided directly as a DataFrame or convertible structure.
+
+**Raises:**
+- `ValueError`: If neither `filepath` nor `dataset` is provided.
+
+**Example:**
+```python
+processor = DataProcessor(filepath="data/data.csv")
+# or
+processor = DataProcessor(dataset=my_dataframe)
