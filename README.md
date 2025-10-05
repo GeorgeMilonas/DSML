@@ -9,6 +9,11 @@ A Python toolkit designed to streamline common data science and machine learning
 A reusable Python project providing classes to simplify common data science / ML workflows: data cleaning, missing value and outlier handling, and transformation steps. Ideal for analysts or machine learning practitioners to integrate into their pipelines.
 
 
+## Documentation
+
+Full API and method reference are available in the [`docs/`](docs/index.md) folder.
+
+
 ## Contents
 
 - [Installation](#installation)  
