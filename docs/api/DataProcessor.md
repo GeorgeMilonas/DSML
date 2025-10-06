@@ -108,14 +108,7 @@ Sets the specified column as the index of the DataFrame.
 processor.set_index_column("ID")
 ```
 
-## 7. `set_index_date(
-    self,
-    index_column,
-    log_invalid=False,
-    log_path="invalid_datetime_rows.csv",
-    check_index=True,
-    force_plain_date=False,
-)`
+## 7. `set_index_date(self, index_column, log_invalid=False, log_path="invalid_datetime_rows.csv", check_index=True, force_plain_date=False,)`
 
 **Description:**
 Sets a DataFrame column as the datetime index, handling conversion, validation, and optional logging.
