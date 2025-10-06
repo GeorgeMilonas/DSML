@@ -357,7 +357,7 @@ Removes outliers from a specified column using the IQR method.
 **Example:**
 ```python
 processor.remove_outliers_iqr(
-column='TOTAL_SALES',
+column='your_column',
 iqr_multiplier=1,
 return_rows=True,
 log_path="logs/iqr_outliers.csv"
