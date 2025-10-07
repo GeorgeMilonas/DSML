@@ -506,28 +506,23 @@ Displays side-by-side boxplots before and after outlier removal.
 - `cleaned_df` (`pd.DataFrame`): DataFrame after outlier removal.
 - `column` (`str`): Column to visualize.
 
-<div style="margin-top: 16px; border: 1px dashed red;"></div>
 
 **Example:**
 ```python
 processor.visualize_outliers_boxplot(original_df, processor.df, 'your_column')
 ```
 
-<div style="margin-top: 16px; border: 1px dashed red;"></div>
 
 **Example Output:**
 **Foo Sales Data**
 
-<div style="margin-top: 16px; border: 1px dashed red;"></div>
 
 ![Boxplot before and after outlier removal `foo_data`](/docs/images/Figure_1_foo_Before_after.png)
 
-<div style="margin-top: 16px; border: 1px dashed red;"></div>
 
 **Example Output:**
 **Real Sales Data**
 
-<div style="margin-top: 16px; border: 1px dashed red;"></div>
 
 ![Boxplot before and after outlier removal `real data`](/docs/images/Figure_3_real_Before_after.png)
 
