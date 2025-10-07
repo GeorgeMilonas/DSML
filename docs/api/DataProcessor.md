@@ -33,9 +33,8 @@ This document provides a detailed API reference for the `DataProcessor` class us
 ## Methods
 
 
----
-
 ### Initialization & Loading
+---
 
 ## 1. `__init__(self, filepath=None, dataset=None)`<a name="1-__init__"></a>
 
@@ -73,9 +72,9 @@ Loads the dataset from the specified file path. Supports `.csv`, `.xlsx`, `.xls`
 processor = DataProcessor(filepath="/your_path/data/your_data.csv").load()
 ```
 
----
 
 ### Basic Data Inspection
+---
 
 ## 3. `check_dtypes(self)`<a name="3-check_dtypes"></a>
 
@@ -103,9 +102,9 @@ Identifies and prints categorical columns (object or category dtype) and their u
 categoricals = processor.check_categorical_columns()
 ```
 
----
 
 ### Index & Column Management
+---
 
 ## 5. `drop_columns(self, columns_to_drop)`<a name="5-drop_columns"></a>
 
@@ -146,7 +145,7 @@ Sets the specified column as the index of the DataFrame.
 processor.set_index_column("ID")
 ```
 
-## 7. `set_index_date(self)`<a name="7-set_indedx_date"></a>
+## 7. `set_index_date(self)`<a name="7-set_index_date"></a>
 
 `**Signature:**`
 ```python
@@ -194,9 +193,9 @@ Checks if the DataFrame index is of a datetime-related type.
 processor.check_index_is_datetime()
 ```
 
----
 
 ### Missing Data Handling
+---
 
 ## 9. `check_missing(self)`<a name="9-check_missing"></a>
 
@@ -254,9 +253,9 @@ Handles missing values in the DataFrame using the specified strategy.
 processor.handle_missing_values(strategy='mean', force_int_cols=['your_column'])
 ```
 
----
 
 ### Duplicate Handling
+---
 
 ## 11. `inspect_duplicates(self)`<a name="11-inspect_duplicates"></a>
 
@@ -373,9 +372,9 @@ Removes duplicate columns from the DataFrame.
 processor.handle_duplicate_columns()
 ```
 
----
 
 ### Outlier Detection & Removal
+---
 
 ## 16. `check_outliers(self)`<a name="16-check_outliers"></a>
 
@@ -478,9 +477,9 @@ processor.remove_outliers_iqr(
 )
 ```
 
----
 
 ### Visualization
+---
 
 ## 20. `get_processed_data(self)`<a name="20-get_processed_data"></a>
 
@@ -495,6 +494,8 @@ Returns the processed DataFrame.
 print(processor.get_processed_data())
 ```
 
+### Visualization
+---
 ## 21. `visualize_outliers_boxplot(self, original_df, cleaned_df, column)`<a name="21-visualize_outliers_boxplot"></a>
     
 **Description:**
@@ -509,6 +510,12 @@ Displays side-by-side boxplots before and after outlier removal.
 ```python
 processor.visualize_outliers_boxplot(original_df, processor.df, 'your_column')
 ```
+
+**Example Output:**
+
+![Boxplot before and after outlier removal `foo_data`](images/Figure_1_foo_Before_after.png)
+
+![Boxplot before and after outlier removal `real data`](images/Figure_3_foo_Before_after.png)
 
 ## 22. `visualize_outliers_histogram(self)`<a name="22-visualize_outliers_histogram"></a>
 
@@ -535,10 +542,15 @@ Displays histograms before and after outlier removal using KDE plots.
 processor.visualize_outliers_histogram(original_df, processor.df, 'your_column')
 ```
 
----
+**Example Output:**
+
+![Histogram before and after outlier removal `foo_data`](images/Figure_2_foo_Before_after.png)
+
+![Histogram before and after outlier removal `real data`](images/Figure_4_foo_Before_after.png)
+
 
 ### Automation & Export
-
+---
 ## 23. `run_all_checks(self)`<a name="23-run_all_checks"></a>
 
 **Description:**
