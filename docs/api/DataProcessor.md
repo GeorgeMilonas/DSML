@@ -28,12 +28,9 @@ This document provides a detailed API reference for the `DataProcessor` class us
 22. [`visualize_outliers_histogram`](#22-visualize_outliers_histogram)
 23. [`run_all_checks`](#23-run_all_checks)
 24. [`save`](#24-save)
-    
-...
 
 
-
-## Methods
+### Methods
 
 
 ---
@@ -78,7 +75,7 @@ processor = DataProcessor(filepath="/your_path/data/your_data.csv").load()
 
 ---
 
-### Data Inspection
+### Basic Data Inspection
 
 ## 3. `check_dtypes(self)`
 
@@ -105,6 +102,10 @@ Identifies and prints categorical columns (object or category dtype) and their u
 ```python
 categoricals = processor.check_categorical_columns()
 ```
+
+---
+
+### Index & Column Management
 
 ## 5. `drop_columns(self, columns_to_drop)`
 
@@ -193,6 +194,10 @@ Checks if the DataFrame index is of a datetime-related type.
 processor.check_index_is_datetime()
 ```
 
+---
+
+### Missing Data Handling
+
 ## 9. `check_missing(self)`
 
 `**Signature:**`
@@ -248,6 +253,10 @@ Handles missing values in the DataFrame using the specified strategy.
 ```python
 processor.handle_missing_values(strategy='mean', force_int_cols=['your_column'])
 ```
+
+---
+
+### Duplicate Handling
 
 ## 11. `inspect_duplicates(self)`
 
@@ -364,6 +373,10 @@ Removes duplicate columns from the DataFrame.
 processor.handle_duplicate_columns()
 ```
 
+---
+
+### Outlier Detection & Removal
+
 ## 16. `check_outliers(self)`
 
 `**Signature:**`
@@ -465,6 +478,10 @@ processor.remove_outliers_iqr(
 )
 ```
 
+---
+
+### Visualization
+
 ## 20. `get_processed_data(self)`
 
 **Description:**
@@ -518,6 +535,10 @@ Displays histograms before and after outlier removal using KDE plots.
 processor.visualize_outliers_histogram(original_df, processor.df, 'your_column')
 ```
 
+---
+
+### Automation & Export
+
 ## 23. `run_all_checks(self)`
 
 **Description:**
@@ -550,3 +571,5 @@ Saves the DataFrame to disk.
 ```python
 processor.save(path="/your-path/data/processed_data.xlsx", format="xlsx")
 ```
+
+---
