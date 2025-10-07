@@ -514,8 +514,7 @@ processor.visualize_outliers_boxplot(original_df, processor.df, 'your_column')
 
 **Example Output:**
 **Foo Sales Data**
-
-
+<br><br>
 ![Boxplot before and after outlier removal `foo_data`](/docs/images/Figure_1_foo_Before_after.png)
 
 
