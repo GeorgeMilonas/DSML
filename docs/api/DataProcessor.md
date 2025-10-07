@@ -513,9 +513,9 @@ processor.visualize_outliers_boxplot(original_df, processor.df, 'your_column')
 
 **Example Output:**
 
-![Boxplot before and after outlier removal `foo_data`](images/Figure_1_foo_Before_after.png)
+![Boxplot before and after outlier removal `foo_data`](/docs/images/Figure_1_foo_Before_after.png)
 
-![Boxplot before and after outlier removal `real data`](images/Figure_3_foo_Before_after.png)
+![Boxplot before and after outlier removal `real data`](/docs/images/Figure_3_foo_Before_after.png)
 
 ## 22. `visualize_outliers_histogram(self)`<a name="22-visualize_outliers_histogram"></a>
 
@@ -544,9 +544,9 @@ processor.visualize_outliers_histogram(original_df, processor.df, 'your_column')
 
 **Example Output:**
 
-![Histogram before and after outlier removal `foo_data`](images/Figure_2_foo_Before_after.png)
+![Histogram before and after outlier removal `foo_data`](/docs/images/Figure_2_foo_Before_after.png)
 
-![Histogram before and after outlier removal `real data`](images/Figure_4_foo_Before_after.png)
+![Histogram before and after outlier removal `real data`](/docs/images/Figure_4_foo_Before_after.png)
 
 
 ### Automation & Export
