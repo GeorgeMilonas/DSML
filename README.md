@@ -6,7 +6,7 @@
 A Python toolkit designed to streamline common data science and machine learning workflows by providing reusable classes for data cleaning, missing value handling, outlier detection, and transformations.
 
 # Project Summary
-A reusable Python project providing classes to simplify common data science / ML workflows: data cleaning, missing value and outlier handling, and transformation steps. Ideal for analysts or machine learning practitioners to integrate into their pipelines.
+A reusable Python project providing classes to simplify common DS / ML workflows: data cleaning, missing value and outlier handling, and transformation steps. Ideal for analysts or machine learning practitioners to integrate into their pipelines.
 
 
 ## Documentation
