@@ -29,10 +29,10 @@ processor = DataProcessor(dataset=my_dataframe)
 ## 2. `load(self)`
 
 **Description:** 
-Loads the dataset from the specified file path. Supports `.csv`, `.xlsx`, .`xls`, and .`json` formats.
+Loads the dataset from the specified file path. Supports `.csv`, `.xlsx`, `.xls`, and `.json` formats.
 
 **Returns:**
-- `DataProcessor`: The current instance, allowing for method chaining
+- `DataProcessor`: The current instance, allowing for method chaining.
 
 **Raises:**
 - `RuntimeError`: If the file cannot be loaded due to format or internal read errors.
@@ -55,7 +55,7 @@ Prints and returns the data types of each column in the dataset.
 dtypes = processor.check_dtypes()
 ```
 
-## 4.`check_categorical_columns`
+## 4. `check_categorical_columns(self)`
 
 **Description:** 
 Identifies and prints categorical columns (object or category dtype) and their unique value counts.
@@ -68,14 +68,13 @@ Identifies and prints categorical columns (object or category dtype) and their u
 categoricals = processor.check_categorical_columns()
 ```
 
-## 5.`drop_columns(self, columns_to_drop)`
+## 5. `drop_columns(self, columns_to_drop)`
 
 **Description:** 
 Drops one or more specified columns from the dataset if they exist.
 
-
 **Args:**
-- ` columns_to_drop (str or list/tuple/set of str)`: The name(s) of the column(s) to be dropped.
+- `columns_to_drop` (`str` or `list`/`tuple`/`set` of `str`): The name(s) of the column(s) to be dropped.
 
 **Returns:**
 - `DataProcessor`: The current instance, allowing for method chaining.
@@ -95,7 +94,7 @@ processor.drop_columns(["col1", "col2"])
 Sets the specified column as the index of the DataFrame.
 
 **Args:**
-- `column_name (str)`: The name of the column to set as index.
+- `column_name` (`str`): The name of the column to set as index.
 
 **Returns:**
 - `DataProcessor`: The current instance, allowing for method chaining.
@@ -108,7 +107,9 @@ Sets the specified column as the index of the DataFrame.
 processor.set_index_column("ID")
 ```
 
-## 7. `set_index_date()`
+## 7. `set_index_date(self)`
+
+`**Signature:**`
 ```python
 def set_index_date(
     self,
@@ -124,14 +125,14 @@ def set_index_date(
 Sets a DataFrame column as the datetime index, handling conversion, validation, and optional logging.
 
 **Args:**
-- `index_column (str)`: Name of the column to set as index.
-- `log_invalid (bool, optional)`: Whether to log rows with invalid datetime values. Defaults to False.
-- `log_path (str, optional)`: File path to save invalid datetime rows if logging is enabled. Defaults to "invalid_datetime_rows.csv".
-- `check_index (bool, optional)`: Whether to validate the index after setting it. Defaults to True.
-- `force_plain_date (bool, optional)`: Whether to force conversion to plain date (YYYY-MM-DD) instead of datetime. Defaults to False.
+- `index_column` (`str`): Name of the column to set as index.
+- `log_invalid` (`bool`, optional): Whether to log rows with invalid datetime values. Defaults to False.
+- `log_path` (`str`, optional): File path to save invalid datetime rows if logging is enabled. Defaults to "invalid_datetime_rows.csv".
+- `check_index` (`bool`, optional): Whether to validate the index after setting it. Defaults to True.
+- `force_plain_date` (`bool`, optional)`: Whether to force conversion to plain date (YYYY-MM-DD) instead of datetime. Defaults to False.
 
 **Returns:**
-- `self`: The modified instance with the index set.
+- `DataProcessor`: The `DataProcessor` instance with the datetime index set.
 
 **Raises:**
 - `ValueError`: If the specified column does not exist in the DataFrame.
@@ -160,9 +161,9 @@ processor.check_index_is_datetime()
 Analyzes and reports missing values in the DataFrame.
 
 **Args:**
-- `verbose (bool, optional)`: Whether to print detailed missing info. Defaults to True.
-- `return_all (bool, optional)`: Reserved for future use. Currently has no effect.
-- `return_rows (bool, optional)`: Whether to return rows with missing values.
+- `verbose` (`bool`, optional): Whether to print detailed missing info. Defaults to True.
+- `return_all` (`bool`, optional): Reserved for future use. Currently has no effect.
+- `return_rows` (`bool`, optional): Whether to return rows with missing values.
 
 **Returns:**
 - `Optional[pd.DataFrame]`: DataFrame containing rows with missing values, if `return_rows` is True.
@@ -170,7 +171,6 @@ Analyzes and reports missing values in the DataFrame.
 **Example:**
 ```python
 processor.check_missing(return_rows=True)
-**Example:**
 ```
 
 ## 10. `handle_missing_values(self, strategy="mean", force_int_cols=None)`
@@ -179,19 +179,18 @@ processor.check_missing(return_rows=True)
 Handles missing values in the DataFrame using the specified strategy.
 
 **Args:**
-- `strategy (str, optional)`: Strategy to fill or drop missing values. 
-- `Choices`: "mean", "median", "most_frequent", "drop". Defaults to "mean".
-- `force_int_cols (list[str], optional)`: List of columns that should be converted back to integers after imputation.
+- `strategy` (`str`, optional): Strategy to fill or drop missing values. Choices are `"mean"`, `"median"`, `"most_frequent"`, `"drop"`. Defaults to `"mean"`.
+- `force_int_cols` (`list[str]`, optional): List of columns that should be converted back to integers after imputation.
 
 **Returns:**
-- `self`: The modified instance with missing values handled.
+- `DataProcessor`: The modified instance with missing values handled.
 
 **Raises:**
 - `ValueError`: If an invalid strategy is provided.
 
 **Example:**
 ```python
-processor.handle_missing_values(strategy='mean', force_int_cols=['your_colummn'])
+processor.handle_missing_values(strategy='mean', force_int_cols=['your_column'])
 ```
 
 ## 11. `inspect_duplicates(self, subset=None, keep=False, return_rows=False)`
@@ -200,13 +199,13 @@ processor.handle_missing_values(strategy='mean', force_int_cols=['your_colummn']
 Inspects the DataFrame for duplicate rows.
 
 **Args:**
-- `subset (list[str], optional)`: Columns to consider for duplicate detection. If None, all columns are used.
-- `keep (bool or str, optional)`: Whether to keep the first/last duplicate or mark all. Defaults to False.
-- `return_rows (bool, optional)`: Whether to return the duplicate rows.
+- `subset` (`list[str]`, optional): Columns to consider for duplicate detection. If None, all columns are used.
+- `keep` (`bool` or `str`, optional): Whether to keep the first/last duplicate or mark all. Defaults to False.
+- `return_rows` (`bool`, optional): Whether to return the duplicate rows.
 
 **Returns:**
 - `int`: Number of duplicate rows found.
-- `Optional[pd.DataFrame]`: DataFrame of duplicates, if `return_rows` is True.
+- `pd.DataFrame`, optional: DataFrame of duplicates, if `return_rows` is True.
 
 **Example:**
 ```python
@@ -219,11 +218,10 @@ processor.inspect_duplicates(subset=None, keep=False, return_rows=False)
 Handles duplicate rows in the DataFrame using the specified method.
 
 **Args:**
-- `method (str, optional)`: Strategy for handling duplicates. 
--   `Options`: "keep_first", "keep_last", "drop_all", "flag". Defaults to "keep_first".
+- `method` (`str`, optional): Strategy for handling duplicates. Options are `"keep_first"`, `"keep_last"`, `"drop_all"`, `"flag"`. Defaults to `"keep_first"`.
 
 **Returns:**
-- `self`: The modified instance with duplicates handled.
+- `DataProcessor`: The modified instance with duplicates handled.
 
 **Raises:**
 - `ValueError`: If an unknown method is provided.
@@ -239,11 +237,11 @@ processor.handle_duplicates(method="keep_first")
 Logs duplicate rows to a file.
 
 **Args:**
-- `subset (list[str], optional)`: Columns to consider for duplicates. Defaults to all.
-- `keep (bool or str, optional)`: Duplicate retention policy for identification. Defaults to False.
-- `log_dir (str, optional)`: Directory where log file will be saved. Defaults to "logs".
-- `filename (str, optional)`: Filename to use. If None, a timestamped file will be created.
-- `file_format (str, optional)`: Output format - "csv" or "xlsx". Defaults to "csv".
+- `subset` (`list[str]`, optional): Columns to consider for duplicates. Defaults to all.
+- `keep` (`bool` or `str`, optional): Duplicate retention policy for identification. Defaults to False.
+- `log_dir` (`str`, optional): Directory where log file will be saved. Defaults to "logs".
+- `filename` (`str`, optional): Filename to use. If None, a timestamped file will be created.
+- `file_format` (`str`, optional): Output format - `"csv"` or `"xlsx"`. Defaults to `"csv"`.
 
 **Returns:**
 - `Optional[Path]`: Path to the saved log file, or None if no duplicates were found.
@@ -275,10 +273,10 @@ processor.inspect_duplicate_columns()
 Removes duplicate columns from the DataFrame.
 
 **Args:**
-- `keep (str, optional)`: Which duplicate to keep - "first" or "last". Defaults to "first".
+- `keep` (`str`, optional): Which duplicate to keep - "first" or "last". Defaults to "first".
 
 **Returns:**
-- `self`: The modified instance with duplicate columns removed.
+- `DataProcessor`: The modified instance with duplicate columns removed.
 
 **Raises:**
 - `ValueError`: If `keep` is not "first" or "last".
@@ -294,9 +292,9 @@ processor.handle_duplicate_columns()
 Detects outliers in numerical columns using Z-score method.
 
 **Args:**
-- `z_thresh (float, optional)`: Z-score threshold to identify outliers. Defaults to 2.
-- `return_rows (bool, optional)`: If True, return full rows containing outliers. Defaults to False.
-- `log_path (str or Path, optional)`: File path to save outlier rows as CSV. Optional.
+- `z_thresh` (`float`, optional): Z-score threshold to identify outliers. Defaults to 2.
+- `return_rows` (`bool`, optional): If True, return full rows containing outliers. Defaults to False.
+- `log_path` (`str` or `Path`, optional): File path to save outlier rows as CSV. Optional.
 
 **Returns:**
 - `pd.DataFrame` or `pd.Series`: DataFrame of outlier rows (if `return_rows` is True), or Series with outlier counts per column.
@@ -313,10 +311,10 @@ outliers = processor.check_outliers(z_thresh=2, return_rows=True, log_path='/you
 Removes rows that contain outliers in any numeric column based on Z-score.
 
 **Args:**
-- `z_thresh (float, optional)`: Z-score threshold to define outliers. Defaults to 2.
+- `z_thresh` (`float`, optional): Z-score threshold to define outliers. Defaults to 2.
 
 **Returns:**
-- `self`: The modified instance with outliers removed.
+- `DataProcessor`: The modified instance with outliers removed.
 
 **Example:**
 ```python
@@ -329,11 +327,11 @@ processor.remove_outliers_zscore()
 Removes outliers from a specific column using Z-score method.
 
 **Args:**
-- `column (str)`: Column name to check for outliers.
-- `z_thresh (float, optional)`: Z-score threshold. Defaults to 2.
+- `column` (`str`): Column name to check for outliers.
+- `z_thresh` (`float`, optional): Z-score threshold. Defaults to 2.
 
 **Returns:**
-- `self`: The modified instance with outliers removed from the specified column.
+- `DataProcessor`: The modified instance with outliers removed from the specified column.
 
 **Example:**
 ```python
@@ -343,24 +341,24 @@ processor.remove_outliers_from_column('your_column', z_thresh=2)
 ## 19. `remove_outliers_iqr(self, column, iqr_multiplier=1.5, return_rows=False, log_path=None)`
 
 **Description:**
-Removes outliers from a specified column using the IQR method.
+Removes rows containing outliers from a specified column using the IQR method.
 
 **Args:**
-- `column (str)`: Column to process.
-- `iqr_multiplier (float, optional)`: Multiplier to define outlier range. Defaults to 1.5.
-- `return_rows (bool, optional)`: Whether to return the removed outlier rows. Defaults to False.
-- `log_path (str or Path, optional)`: Path to save removed outliers as CSV. Optional.
+- `column` (`str`): Column to process.
+- `iqr_multiplier` (`float`, optional): Multiplier to define outlier range. Defaults to 1.5.
+- `return_rows` (`bool`, optional): Whether to return the removed outlier rows. Defaults to False.
+- `log_path` (`str` or `Path`, optional): Path to save removed outliers as CSV. Optional.
 
 **Returns:**
-- `self` or `pd.DataFrame`: Modified instance, or removed outliers DataFrame if `return_rows` is True.
+- `DataProcessor` or `pd.DataFrame`: Modified instance, or removed outliers DataFrame if `return_rows` is True.
 
 **Example:**
 ```python
 processor.remove_outliers_iqr(
-column='your_column',
-iqr_multiplier=1,
-return_rows=True,
-log_path="logs/iqr_outliers.csv"
+    column='your_column',
+    iqr_multiplier=1,
+    return_rows=True,
+    log_path="logs/iqr_outliers.csv"
 )
 ```
 
@@ -383,9 +381,9 @@ print(processor.get_processed_data())
 Displays side-by-side boxplots before and after outlier removal.
 
 **Args:**
-- `original_df (pd.DataFrame)`: DataFrame before outlier removal.
-- `cleaned_df (pd.DataFrame)`: DataFrame after outlier removal.
-- `column (str)`: Column to visualize.
+- `original_df` (`pd.DataFrame`): DataFrame before outlier removal.
+- `cleaned_df` (`pd.DataFrame`): DataFrame after outlier removal.
+- `column` (`str`): Column to visualize.
 
 **Example:**
 ```python
@@ -398,9 +396,9 @@ processor.visualize_outliers_boxplot(original_df, processor.df, 'your_column')
 Displays histograms before and after outlier removal using KDE plots.
 
 **Args:**
-- `original_df (pd.DataFrame)`: DataFrame before outlier removal.
-- `cleaned_df (pd.DataFrame)`: DataFrame after outlier removal.
-- `column (str)`: Column to visualize.
+- `original_df` (`pd.DataFrame`): DataFrame before outlier removal.
+- `cleaned_df` (`pd.DataFrame`): DataFrame after outlier removal.
+- `column` (`str`): Column to visualize.
 
 **Example:**
 ```python
@@ -413,7 +411,7 @@ processor.visualize_outliers_histogram(original_df, processor.df, 'your_column')
 Runs a set of basic data quality checks on the DataFrame.
 
 **Returns:**
-- `self`: The instance after running all checks.
+- `DataProcessor`: The instance after running all checks.
 
 **Example:**
 ```python
@@ -426,11 +424,11 @@ processor.run_all_checks()
 Saves the DataFrame to disk.
 
 **Args:**
-- `path (str or Path)`: File path where the data should be saved.
-- `format (str, optional)`: Output format: 'csv' or 'xlsx'. Defaults to 'csv'.
+- `path` (`str` or `Path`): File path where the data should be saved.
+- `format` (`str`, optional): Output format: 'csv' or 'xlsx'. Defaults to 'csv'.
 
 **Returns:**
-- `self`: The instance after saving the data.
+- `DataProcessor`: The instance after saving the data.
 
 **Raises:**
 - `ValueError`: If the format is not supported.
