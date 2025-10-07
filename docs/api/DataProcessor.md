@@ -510,15 +510,17 @@ Displays side-by-side boxplots before and after outlier removal.
 ```python
 processor.visualize_outliers_boxplot(original_df, processor.df, 'your_column')
 ```
-<br>
+
 **Example Output:**
 **Foo Sales Data**
 ![Boxplot before and after outlier removal `foo_data`](/docs/images/Figure_1_foo_Before_after.png)
-<br>
+
 **Example Output:**
 **Real Sales Data**
 ![Boxplot before and after outlier removal `real data`](/docs/images/Figure_3_real_Before_after.png)
-<br>
+
+---
+
 ## 22. `visualize_outliers_histogram(self)`<a name="22-visualize_outliers_histogram"></a>
 
 `**Signature:**`
@@ -543,15 +545,17 @@ Displays histograms before and after outlier removal using KDE plots.
 ```python
 processor.visualize_outliers_histogram(original_df, processor.df, 'your_column')
 ```
-<br>
+
 **Example Output:**
 **Foo Sales Data**
 ![Histogram before and after outlier removal `foo_data`](/docs/images/Figure_2_foo_Before_after.png)
-<br>
+
 **Example Output:**
 **Real Sales Data**
 ![Histogram before and after outlier removal `real data`](/docs/images/Figure_4_real_Before_after.png)
-<br>
+
+---
+
 ### Automation & Export
 ---
 ## 23. `run_all_checks(self)`<a name="23-run_all_checks"></a>
