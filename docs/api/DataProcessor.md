@@ -8,7 +8,7 @@ This document provides a detailed API reference for the `DataProcessor` class us
 2. [`load`](#2-load)
 3. [`check_dtypes`](#3-check_dtypes)
 4. [`check_categorical_columns`](#4-check_categorical_columns)
-5. [`drop_columns`(#5-`drop_columns)]
+5. [`drop_columns`](#5-drop_columns)
 6. [`set_index_column`](#6-set_index_column)
 7. [`set_index_date`](#7-set_index_date)
 8. [`check_index_is_datetime`](#8-check_index_is_datetime)
