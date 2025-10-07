@@ -2,10 +2,43 @@
 
 This document provides a detailed API reference for the `DataProcessor` class used in the DSML project.
 
+## Table of Contents
+
+1. [`__init__`](#1-__init__)
+2. [`load`](#2-load)
+3. [`check_dtypes`](#3-check_dtypes)
+4. [`check_categorical_columns`](#4-check_categorical_columns)
+5. [`drop_columns`(#5-`drop_columns)]
+6. [`set_index_column`](#6-set_index_column)
+7. [`set_index_date`](#7-set_index_date)
+8. [`check_index_is_datetime`](#8-check_index_is_datetime)
+9. [`check_missing`](#9-check_missing)
+10. [`handle_missing_values`](#10-handle_missing_values)
+11. [`inspect_duplicates`](#11-inspect_duplicates)
+12. [`handle_duplicates`](#12-handle_duplicates)
+13. [`log_duplicates`](#13-log_duplicates)
+14. [`inspect_duplicate_columns`](#14-inspect_duplicate_columns)
+15. [`handle_duplicate_columns`](#15-handle_duplicate_columns)
+16. [`check_outliers`](#16-check_outliers)
+17. [`remove_outliers_zscore`](#17-remove_outliers_zscore)
+18. [`remove_outliers_from_column`](#18-remove_outliers_from_column)
+19. [`remove_outliers_iqr`](#19-remove_outliers_iqr)
+20. [`get_processed_data`](#20-get_processed_data)
+21. [`visualize_outliers_boxplot`](#21-visualize_outliers_boxplot)
+22. [`visualize_outliers_histogram`](#22-visualize_outliers_histogram)
+23. [`run_all_checks`](#23-run_all_checks)
+24. [`save`](#24-save)
+    
+...
+
+
+
 ## Methods
 
 
 ---
+
+### Initialization & Loading
 
 ## 1. `__init__(self, filepath=None, dataset=None)`
 
@@ -32,7 +65,8 @@ processor = DataProcessor(dataset=my_dataframe)
 Loads the dataset from the specified file path. Supports `.csv`, `.xlsx`, `.xls`, and `.json` formats.
 
 **Returns:**
-- `DataProcessor`: The current instance, allowing for method chaining.
+- `DataProcessor`: The updated instance.
+- `pd.DataFrame`, optional: Returned only if `return_rows=True`.
 
 **Raises:**
 - `RuntimeError`: If the file cannot be loaded due to format or internal read errors.
@@ -41,6 +75,10 @@ Loads the dataset from the specified file path. Supports `.csv`, `.xlsx`, `.xls`
 ```python
 processor = DataProcessor(filepath="/your_path/data/your_data.csv").load()
 ```
+
+---
+
+### Data Inspection
 
 ## 3. `check_dtypes(self)`
 
@@ -155,7 +193,17 @@ Checks if the DataFrame index is of a datetime-related type.
 processor.check_index_is_datetime()
 ```
 
-## 9. `check_missing(self, verbose=True, return_all=False, return_rows=False)`
+## 9. `check_missing(self)`
+
+`**Signature:**`
+```python
+def check_missing(
+    self,
+    verbose=True,
+    return_all=False,
+    return_rows=False
+)
+```
 
 **Description:**
 Analyzes and reports missing values in the DataFrame.
@@ -166,14 +214,22 @@ Analyzes and reports missing values in the DataFrame.
 - `return_rows` (`bool`, optional): Whether to return rows with missing values.
 
 **Returns:**
-- `Optional[pd.DataFrame]`: DataFrame containing rows with missing values, if `return_rows` is True.
+- `Optional[pd.DataFrame]` (`pd.DataFrame`, optional): DataFrame containing rows with missing values, if `return_rows` is True.
 
 **Example:**
 ```python
 processor.check_missing(return_rows=True)
 ```
 
-## 10. `handle_missing_values(self, strategy="mean", force_int_cols=None)`
+## 10. `handle_missing_values(self)`
+
+`**Signature:**`
+```python
+def handle_missing_values(self,
+    strategy="mean",
+    force_int_cols=None
+)
+```
 
 **Description:**
 Handles missing values in the DataFrame using the specified strategy.
@@ -193,7 +249,17 @@ Handles missing values in the DataFrame using the specified strategy.
 processor.handle_missing_values(strategy='mean', force_int_cols=['your_column'])
 ```
 
-## 11. `inspect_duplicates(self, subset=None, keep=False, return_rows=False)`
+## 11. `inspect_duplicates(self)`
+
+`**Signature:**`
+```python
+def inspect_duplicates(
+    self,
+    subset=None,
+    keep=False,
+    return_rows=False
+)
+```
 
 **Description:**
 Inspects the DataFrame for duplicate rows.
@@ -205,8 +271,9 @@ Inspects the DataFrame for duplicate rows.
 
 **Returns:**
 - `int`: Number of duplicate rows found.
-- `pd.DataFrame`, optional: DataFrame of duplicates, if `return_rows` is True.
-
+- `DataProcessor`: The updated instance.
+- `pd.DataFrame`, optional: Returned only if `return_rows=True`.
+  
 **Example:**
 ```python
 processor.inspect_duplicates(subset=None, keep=False, return_rows=False)
@@ -231,8 +298,19 @@ Handles duplicate rows in the DataFrame using the specified method.
 processor.handle_duplicates(method="keep_first")
 ```
 
-## 13. `log_duplicates(self, subset=None, keep=False, log_dir="logs", filename=None, file_format="csv")`
+## 13. `log_duplicates(self)`
 
+`**Signature:**`
+```python
+def log_duplicates(
+    self,
+    subset=None,
+    keep=False,
+    log_dir="logs",
+    filename=None,
+    file_format="csv"
+)
+```
 **Description:**
 Logs duplicate rows to a file.
 
@@ -286,7 +364,17 @@ Removes duplicate columns from the DataFrame.
 processor.handle_duplicate_columns()
 ```
 
-## 16. `check_outliers(self, z_thresh=2, return_rows=False, log_path=None)`
+## 16. `check_outliers(self)`
+
+`**Signature:**`
+```python
+def check_outliers(
+    self,
+    z_thresh=2,
+    return_rows=False,
+    log_path=None
+)
+```
 
 **Description:**
 Detects outliers in numerical columns using Z-score method.
@@ -298,6 +386,8 @@ Detects outliers in numerical columns using Z-score method.
 
 **Returns:**
 - `pd.DataFrame` or `pd.Series`: DataFrame of outlier rows (if `return_rows` is True), or Series with outlier counts per column.
+- `DataProcessor`: The updated instance.
+- `pd.DataFrame`, optional: Returned only if `return_rows=True`.
 
 **Example:**
 ```python
@@ -338,7 +428,18 @@ Removes outliers from a specific column using Z-score method.
 processor.remove_outliers_from_column('your_column', z_thresh=2)
 ```
 
-## 19. `remove_outliers_iqr(self, column, iqr_multiplier=1.5, return_rows=False, log_path=None)`
+## 19. `remove_outliers_iqr(self)`
+
+`**Signature:**`
+```python
+def remove_outliers_iqr(
+    self,
+    column,
+    iqr_multiplier=1.5,
+    return_rows=False,
+    log_path=None
+)
+```
 
 **Description:**
 Removes rows containing outliers from a specified column using the IQR method.
@@ -351,6 +452,8 @@ Removes rows containing outliers from a specified column using the IQR method.
 
 **Returns:**
 - `DataProcessor` or `pd.DataFrame`: Modified instance, or removed outliers DataFrame if `return_rows` is True.
+- `DataProcessor`: The updated instance.
+- `pd.DataFrame`, optional: Returned only if `return_rows=True`.
 
 **Example:**
 ```python
@@ -390,7 +493,17 @@ Displays side-by-side boxplots before and after outlier removal.
 processor.visualize_outliers_boxplot(original_df, processor.df, 'your_column')
 ```
 
-## 22. `visualize_outliers_histogram(self, original_df, cleaned_df, column)`
+## 22. `visualize_outliers_histogram(self)`
+
+`**Signature:**`
+```python
+def visualize_outliers_histogram(
+    self,
+    original_df,
+    cleaned_df,
+    column
+)
+```
 
 **Description:**
 Displays histograms before and after outlier removal using KDE plots.
