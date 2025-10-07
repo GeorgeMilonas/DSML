@@ -37,7 +37,7 @@ This document provides a detailed API reference for the `DataProcessor` class us
 
 ### Initialization & Loading
 
-## 1. `__init__(self, filepath=None, dataset=None)`
+## 1. `__init__(self, filepath=None, dataset=None)`<a name="1-__init__"></a>
 
 **Description:**  
 Initializes a `DataProcessor` instance. Either a file path or a dataset must be provided.
@@ -56,7 +56,7 @@ processor = DataProcessor(filepath="data/data.csv")
 processor = DataProcessor(dataset=my_dataframe)
 ```
 
-## 2. `load(self)`
+## 2. `load(self)`<a name="2-save"></a>
 
 **Description:** 
 Loads the dataset from the specified file path. Supports `.csv`, `.xlsx`, `.xls`, and `.json` formats.
@@ -77,7 +77,7 @@ processor = DataProcessor(filepath="/your_path/data/your_data.csv").load()
 
 ### Basic Data Inspection
 
-## 3. `check_dtypes(self)`
+## 3. `check_dtypes(self)`<a name="3-check_dtypes"></a>
 
 **Description:** 
 Prints and returns the data types of each column in the dataset.
@@ -90,7 +90,7 @@ Prints and returns the data types of each column in the dataset.
 dtypes = processor.check_dtypes()
 ```
 
-## 4. `check_categorical_columns(self)`
+## 4. `check_categorical_columns(self)`<a name="4-check_categorical_columns"></a>
 
 **Description:** 
 Identifies and prints categorical columns (object or category dtype) and their unique value counts.
@@ -107,7 +107,7 @@ categoricals = processor.check_categorical_columns()
 
 ### Index & Column Management
 
-## 5. `drop_columns(self, columns_to_drop)`
+## 5. `drop_columns(self, columns_to_drop)`<a name="5-drop_columns"></a>
 
 **Description:** 
 Drops one or more specified columns from the dataset if they exist.
