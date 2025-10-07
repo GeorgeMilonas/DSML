@@ -4,33 +4,33 @@ This document provides a detailed API reference for the `DataProcessor` class us
 
 ## Table of Contents
 
-1. [`__init__`](#1-__init__)
-2. [`load`](#2-load)
-3. [`check_dtypes`](#3-check_dtypes)
-4. [`check_categorical_columns`](#4-check_categorical_columns)
-5. [`drop_columns`](#5-drop_columns)
-6. [`set_index_column`](#6-set_index_column)
-7. [`set_index_date`](#7-set_index_date)
-8. [`check_index_is_datetime`](#8-check_index_is_datetime)
-9. [`check_missing`](#9-check_missing)
-10. [`handle_missing_values`](#10-handle_missing_values)
-11. [`inspect_duplicates`](#11-inspect_duplicates)
-12. [`handle_duplicates`](#12-handle_duplicates)
-13. [`log_duplicates`](#13-log_duplicates)
-14. [`inspect_duplicate_columns`](#14-inspect_duplicate_columns)
-15. [`handle_duplicate_columns`](#15-handle_duplicate_columns)
-16. [`check_outliers`](#16-check_outliers)
-17. [`remove_outliers_zscore`](#17-remove_outliers_zscore)
-18. [`remove_outliers_from_column`](#18-remove_outliers_from_column)
-19. [`remove_outliers_iqr`](#19-remove_outliers_iqr)
-20. [`get_processed_data`](#20-get_processed_data)
-21. [`visualize_outliers_boxplot`](#21-visualize_outliers_boxplot)
-22. [`visualize_outliers_histogram`](#22-visualize_outliers_histogram)
-23. [`run_all_checks`](#23-run_all_checks)
-24. [`save`](#24-save)
+1. [__init__](#1-__init__)
+2. [load](#2-load)
+3. [check_dtypes](#3-check_dtypes)
+4. [check_categorical_columns](#4-check_categorical_columns)
+5. [drop_columns](#5-drop_columns)
+6. [set_index_column](#6-set_index_column)
+7. [set_index_date](#7-set_index_date)
+8. [check_index_is_datetime](#8-check_index_is_datetime)
+9. [check_missing](#9-check_missing)
+10. [handle_missing_values](#10-handle_missing_values)
+11. [inspect_duplicates](#11-inspect_duplicates)
+12. [handle_duplicates](#12-handle_duplicates)
+13. [log_duplicates](#13-log_duplicates)
+14. [inspect_duplicate_columns](#14-inspect_duplicate_columns)
+15. [handle_duplicate_columns](#15-handle_duplicate_columns)
+16. [check_outliers](#16-check_outliers)
+17. [remove_outliers_zscore](#17-remove_outliers_zscore)
+18. [remove_outliers_from_column](#18-remove_outliers_from_column)
+19. [remove_outliers_iqr](#19-remove_outliers_iqr)
+20. [get_processed_data](#20-get_processed_data)
+21. [visualize_outliers_boxplot](#21-visualize_outliers_boxplot)
+22. [visualize_outliers_histogram](#22-visualize_outliers_histogram)
+23. [run_all_checks](#23-run_all_checks)
+24. [save](#24-save)
 
 
-### Methods
+## Methods
 
 
 ---
