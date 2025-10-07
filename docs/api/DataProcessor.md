@@ -56,7 +56,7 @@ processor = DataProcessor(filepath="data/data.csv")
 processor = DataProcessor(dataset=my_dataframe)
 ```
 
-## 2. `load(self)`<a name="2-save"></a>
+## 2. `load(self)`<a name="2-load"></a>
 
 **Description:** 
 Loads the dataset from the specified file path. Supports `.csv`, `.xlsx`, `.xls`, and `.json` formats.
@@ -127,7 +127,7 @@ processor.drop_columns("unnecessary_column")
 processor.drop_columns(["col1", "col2"])
 ```
 
-## 6. `set_index_column(self, column_name)`
+## 6. `set_index_column(self, column_name)`<a name="6-set_index_column"></a>
 
 **Description:** 
 Sets the specified column as the index of the DataFrame.
@@ -146,7 +146,7 @@ Sets the specified column as the index of the DataFrame.
 processor.set_index_column("ID")
 ```
 
-## 7. `set_index_date(self)`
+## 7. `set_index_date(self)`<a name="7-set_indedx_date"></a>
 
 `**Signature:**`
 ```python
@@ -181,7 +181,7 @@ Sets a DataFrame column as the datetime index, handling conversion, validation, 
 processor.set_index('DATE', log_invalid=True, check_index=False)
 ```
 
-## 8. `check_index_is_datetime(self)`
+## 8. `check_index_is_datetime(self)`<a name="8-check_index_is_datetime"></a>
 
 **Description:**
 Checks if the DataFrame index is of a datetime-related type.
@@ -198,7 +198,7 @@ processor.check_index_is_datetime()
 
 ### Missing Data Handling
 
-## 9. `check_missing(self)`
+## 9. `check_missing(self)`<a name="9-check_missing"></a>
 
 `**Signature:**`
 ```python
@@ -226,7 +226,7 @@ Analyzes and reports missing values in the DataFrame.
 processor.check_missing(return_rows=True)
 ```
 
-## 10. `handle_missing_values(self)`
+## 10. `handle_missing_values(self)`<a name="10-handle_missing_values"></a>
 
 `**Signature:**`
 ```python
@@ -258,7 +258,7 @@ processor.handle_missing_values(strategy='mean', force_int_cols=['your_column'])
 
 ### Duplicate Handling
 
-## 11. `inspect_duplicates(self)`
+## 11. `inspect_duplicates(self)`<a name="11-inspect_duplicates"></a>
 
 `**Signature:**`
 ```python
@@ -288,7 +288,7 @@ Inspects the DataFrame for duplicate rows.
 processor.inspect_duplicates(subset=None, keep=False, return_rows=False)
 ```
 
-## 12. `handle_duplicates(self, method="keep_first")`
+## 12. `handle_duplicates(self, method="keep_first")`<a name="12-handle_duplicates"></a>
 
 **Description:**
 Handles duplicate rows in the DataFrame using the specified method.
@@ -307,7 +307,7 @@ Handles duplicate rows in the DataFrame using the specified method.
 processor.handle_duplicates(method="keep_first")
 ```
 
-## 13. `log_duplicates(self)`
+## 13. `log_duplicates(self)`<a name="13-log_duplicates"></a>
 
 `**Signature:**`
 ```python
@@ -341,7 +341,7 @@ Logs duplicate rows to a file.
 processor.log_duplicates()
 ```
 
-## 14. `inspect_duplicate_columns(self)`
+## 14. `inspect_duplicate_columns(self)`<a name="14-inspect_duplicate_columns"></a>
 
 **Description:**
 Checks for duplicate column names in the DataFrame.
@@ -354,7 +354,7 @@ Checks for duplicate column names in the DataFrame.
 processor.inspect_duplicate_columns()
 ```
 
-## 15. `handle_duplicate_columns(self, keep="first")`
+## 15. `handle_duplicate_columns(self, keep="first")`<a name="15-handle_duplicate_columns"></a>
 
 **Description:**
 Removes duplicate columns from the DataFrame.
@@ -377,7 +377,7 @@ processor.handle_duplicate_columns()
 
 ### Outlier Detection & Removal
 
-## 16. `check_outliers(self)`
+## 16. `check_outliers(self)`<a name="16-check_outliers"></a>
 
 `**Signature:**`
 ```python
@@ -408,7 +408,7 @@ processor.check_outliers()  # Simple output
 outliers = processor.check_outliers(z_thresh=2, return_rows=True, log_path='/your_path/data/your_data.csv') # Enhanced
 ```
 
-## 17. `remove_outliers_zscore(self, z_thresh=2)`
+## 17. `remove_outliers_zscore(self, z_thresh=2)`<a name="17-remove_outliers_zscore"></a>
 
 **Description:**
 Removes rows that contain outliers in any numeric column based on Z-score.
@@ -424,7 +424,7 @@ Removes rows that contain outliers in any numeric column based on Z-score.
 processor.remove_outliers_zscore()
 ```
 
-## 18. `remove_outliers_from_column(self, column, z_thresh=2)`
+## 18. `remove_outliers_from_column(self, column, z_thresh=2)`<a name="18-remove_outliers_from_column"></a>
 
 **Description:**
 Removes outliers from a specific column using Z-score method.
@@ -441,7 +441,7 @@ Removes outliers from a specific column using Z-score method.
 processor.remove_outliers_from_column('your_column', z_thresh=2)
 ```
 
-## 19. `remove_outliers_iqr(self)`
+## 19. `remove_outliers_iqr(self)`<a name="19-remove_outliers_iqr"></a>
 
 `**Signature:**`
 ```python
@@ -482,7 +482,7 @@ processor.remove_outliers_iqr(
 
 ### Visualization
 
-## 20. `get_processed_data(self)`
+## 20. `get_processed_data(self)`<a name="20-get_processed_data"></a>
 
 **Description:**
 Returns the processed DataFrame.
@@ -495,7 +495,7 @@ Returns the processed DataFrame.
 print(processor.get_processed_data())
 ```
 
-## 21. `visualize_outliers_boxplot(self, original_df, cleaned_df, column)`
+## 21. `visualize_outliers_boxplot(self, original_df, cleaned_df, column)`<a name="21-visualize_outliers_boxplot"></a>
     
 **Description:**
 Displays side-by-side boxplots before and after outlier removal.
@@ -510,7 +510,7 @@ Displays side-by-side boxplots before and after outlier removal.
 processor.visualize_outliers_boxplot(original_df, processor.df, 'your_column')
 ```
 
-## 22. `visualize_outliers_histogram(self)`
+## 22. `visualize_outliers_histogram(self)`<a name="22-visualize_outliers_histogram"></a>
 
 `**Signature:**`
 ```python
@@ -539,7 +539,7 @@ processor.visualize_outliers_histogram(original_df, processor.df, 'your_column')
 
 ### Automation & Export
 
-## 23. `run_all_checks(self)`
+## 23. `run_all_checks(self)`<a name="23-run_all_checks"></a>
 
 **Description:**
 Runs a set of basic data quality checks on the DataFrame.
@@ -552,7 +552,7 @@ Runs a set of basic data quality checks on the DataFrame.
 processor.run_all_checks()
 ```
 
-## 24. `save(self, path, format="csv")`
+## 24. `save(self, path, format="csv")`<a name="24-save"></a>
 
 **Description:**
 Saves the DataFrame to disk.
