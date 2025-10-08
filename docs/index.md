@@ -1,6 +1,6 @@
-# DSML Documentation
+# DS/ML Documentation
 
-Welcome to the DSML (Data Science & Machine Learning) toolkit documentation.
+Welcome to the DS/ML (Data Science & Machine Learning) toolkit documentation.
 
 ## API Modules
 
