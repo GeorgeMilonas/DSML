@@ -1,6 +1,6 @@
 # DataProcessor
 
-This document provides a detailed API reference for the `DataProcessor` class used in the DSML project.
+This document provides a detailed API reference for the `DataProcessor` class used in the DS/ML project.
 
 ## Table of Contents
 
