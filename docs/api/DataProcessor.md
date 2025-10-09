@@ -238,6 +238,14 @@ def handle_missing_values(self,
 **Description:**
 Handles missing values in the DataFrame using the specified strategy.
 
+This method supports several strategies for dealing with missing data:
+
+- `mean` and `median` fill missing values in numeric columns accordingly.
+- `most_frequent` fills missing values in categorical columns using the mode.
+- `drop` removes rows containing missing values.
+
+Integer-like numeric columns are detected automatically and, when imputed, their values are rounded.  If listed in `force_int_cols`, those columns will be cast back to integers after imputation.
+
 **Args:**
 - `strategy` (`str`, optional): Strategy to fill or drop missing values. Choices are `"mean"`, `"median"`, `"most_frequent"`, `"drop"`. Defaults to `"mean"`.
 - `force_int_cols` (`list[str]`, optional): List of columns that should be converted back to integers after imputation.
