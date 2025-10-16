@@ -107,11 +107,11 @@ DSML/
 
 
 ## Key Classes
-# Methods Overview
+## Methods Overview
 ### 01. `DataProcessor`
 <details>
 <summary>Click to expand: Method List</summary>
- 
+
 | No. | Method | Description |
 |-----|--------|-------------|
 | 1. | `__init__(filepath=None, dataset=None)` | Initialize the class with a file path or dataset |
@@ -139,6 +139,25 @@ DSML/
 | 23. | `run_all_checks()` | Run major data quality checks in one step |
 | 24. | `save(path, format='csv')` | Save the final DataFrame as a CSV or Excel file |
 </details>
+
+### 02. `DataEDA`
+<details>
+<summary>Click to expand: Method List</summary>
+| No. | Method | Description |
+|-----|--------|-------------|
+| 1. | `plot_categorical_counts(...)` | Shows bar charts of counts for categorical or date columns |
+| 2. | `_apply_weekday_ordering()` | Detects if a column contains weekdays and orders them Monday → Sunday |
+| 3. | `plot_categorical_heatmap()` | Shows a heatmap of counts or proportions between two categorical columns |
+| 4. | `plot_target_distribution(target)` | Plots a bar chart of counts for the target variable, with special ordering for weekdays |
+| 5. | `summary_by_target(target)` | Shows summary statistics grouped by the target variable |
+| 6. | `run_target_analysis(...)` | Runs a full analysis on the target variable, including plots and summary stats. Can bin numeric targets |
+| 7. | `group_and_describe(...)` | Groups data by one or more columns and returns summary statistics |
+| 8. | `plot_grouped_summary(...)` | Plots aggregated numeric data (mean, boxplots, violin plots, etc.) grouped by categories |
+| 9. | `bin_numeric_column(...)` | Converts a numeric column into categorical bins |
+| 10. | `plot_missing_data()` | Shows a bar plot of missing value counts for each column |
+| 11. | `run_all()` | Runs a complete EDA, including summaries, missing data, distributions, correlations, and optional target analysis |
+</details>
+
 
 ## Project Status & Roadmap
 | Classes                      | Status         |
