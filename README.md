@@ -107,10 +107,10 @@ DSML/
 
 
 ## Key Classes
-## Methods Overview
+
 ### 01. `DataProcessor`
 <details>
-<summary>Click to expand: Method List</summary>
+<summary>Expand here: Method List</summary>
 
 | No. | Method | Description |
 |-----|--------|-------------|
@@ -142,7 +142,8 @@ DSML/
 
 ### 02. `DataEDA`
 <details>
-<summary>Click to expand: Method List</summary>
+<summary>Expand here: Method List</summary>
+ 
 | No. | Method | Description |
 |-----|--------|-------------|
 | 1. | `plot_categorical_counts(...)` | Shows bar charts of counts for categorical or date columns |
