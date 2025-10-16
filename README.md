@@ -108,7 +108,9 @@ DSML/
 
 ## Key Classes
 ### Key Class: `DataProcessor` – Methods Overview
-
+<details>
+<summary>Click to expand: Method List</summary>
+ 
 | No. | Method | Description |
 |-----|--------|-------------|
 | 1. | `__init__(filepath=None, dataset=None)` | Initialize the class with a file path or dataset |
@@ -135,7 +137,7 @@ DSML/
 | 22. | `visualize_outliers_histogram(original_df, cleaned_df, column)` | Compare distribution before/after with histograms |
 | 23. | `run_all_checks()` | Run major data quality checks in one step |
 | 24. | `save(path, format='csv')` | Save the final DataFrame as a CSV or Excel file |
-
+</details>
 
 ## Project Status & Roadmap
 | Classes                      | Status         |
